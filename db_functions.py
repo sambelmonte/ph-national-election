@@ -64,26 +64,35 @@ def get_senatoriables(db):
 def vote_presidentiable(db, ballot_number):
     cursor = db.cursor()
     cursor.execute("UPDATE Presidentiables SET votes = votes + 1 WHERE VoteNum = " + ballot_number + ";")
-    cursor.execute("SELECT Name FROM Presidentiables WHERE VoteNum = " + ballot_number + ";")
-    row = cursor.fetchone()
-    candidate = row[0]
+    db.commit()
     cursor.close()
+    cursor2 = db.cursor()
+    cursor2.execute("SELECT Name FROM Presidentiables WHERE VoteNum = " + ballot_number + ";")
+    row = cursor2.fetchone()
+    candidate = row[0]
+    cursor2.close()
     return candidate
 
 def vote_vice_presidentiable(db, ballot_number):
     cursor = db.cursor()
     cursor.execute("UPDATE Vice_Presidentiables SET votes = votes + 1 WHERE VoteNum = " + ballot_number + ";")
-    cursor.execute("SELECT Name FROM Vice_Presidentiables WHERE VoteNum = " + ballot_number + ";")
-    row = cursor.fetchone()
-    candidate = row[0]
+    db.commit()
     cursor.close()
+    cursor2 = db.cursor()
+    cursor2.execute("SELECT Name FROM Vice_Presidentiables WHERE VoteNum = " + ballot_number + ";")
+    row = cursor2.fetchone()
+    candidate = row[0]
+    cursor2.close()
     return candidate
 
 def vote_senatoriable(db, ballot_number):
     cursor = db.cursor()
     cursor.execute("UPDATE Senatoriables SET votes = votes + 1 WHERE VoteNum = " + ballot_number + ";")
-    cursor.execute("SELECT Name FROM Senatoriables WHERE VoteNum = " + ballot_number + ";")
-    row = cursor.fetchone()
-    candidate = row[0]
+    db.commit()
     cursor.close()
+    cursor2 = db.cursor()
+    cursor2.execute("SELECT Name FROM Senatoriables WHERE VoteNum = " + ballot_number + ";")
+    row = cursor2.fetchone()
+    candidate = row[0]
+    cursor2.close()
     return candidate

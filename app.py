@@ -63,7 +63,6 @@ class Vote(Resource):
         vice_president_vote = None
         senator_vote = []
 
-        print(args)
         if args["president"] != None:
             president_name = db_functions.vote_presidentiable(db, args["president"])
             president_vote = {
