@@ -92,4 +92,5 @@ Sample Response:
 ```
 
 # To Do
+- Limit total senators in ```POST /votes```
 - Endpoint to tally votes
